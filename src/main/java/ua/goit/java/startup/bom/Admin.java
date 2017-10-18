@@ -9,6 +9,10 @@ import java.util.Collection;
 
 /*
 A BOM class for administrator
+Admin can not be registered. In database exist just one admin with params:
+username - admin,
+password - admin,
+email - admin@startup.com
  */
 public class Admin extends BaseUser implements UserDetails {
 

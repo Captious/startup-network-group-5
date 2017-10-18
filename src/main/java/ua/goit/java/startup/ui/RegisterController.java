@@ -32,6 +32,12 @@ public class RegisterController {
         this.investorService = investorService;
     }
 
+    /*
+    Admin can not be registered. In database exist just one admin with params:
+    username - admin,
+    password - admin,
+    email - admin@startup.com
+     */
     @RequestMapping(value = "/user_type-selector", method = RequestMethod.GET)
     public ModelAndView showRegistrationPage() {
         ModelAndView modelAndView = new ModelAndView();
