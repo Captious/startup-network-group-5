@@ -26,7 +26,7 @@
 
 
                     <div class="form-group input-group has-feedback">
-                        <form:input path="description" placeholder="Startup Description" class="form-control" required="true" />
+                        <form:textarea path="description" rows="13" cols="400" placeholder="Startup Description" class="form-control" required="true" />
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
 

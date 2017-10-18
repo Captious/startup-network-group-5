@@ -38,23 +38,29 @@
                             <div>${startup.currentSum}</div>
                         </div>
                     </div>
-                    <div class="startup-description">
-                        <c:set var="descr" value="${startup.description}"/>
-                        Description: ${descr.length() > 40 ? descr.substring(0, 40) : descr}...
+                    <div class="startup-description row">
+                        <div class="col-sm-12 test">
+                            <c:set var="descr" value="${startup.description}"/>
+                            Description: ${descr.length() > 40 ? descr.substring(0, 40) : descr}...
+                        </div>
                     </div>
-                    <div>
-                        <a href="<c:url value='/startup/${startup.id}'/>" class="pull-left">See more...</a>
-                        <sec:authorize access="isAuthenticated()">
-                            <sec:authentication property="principal.role" var="userRole"/>
-                            <c:if test="${userRole.equals(UserRole.INVESTOR)}">
+                    <div class="row">
+                        <div class="col-sm-6 test">
+                            <a href="<c:url value='/startup/${startup.id}'/>" class="pull-left">See more...</a>
+                        </div>
+                        <div class="col-sm-6 test">
+                            <sec:authorize access="isAuthenticated()">
+                                <sec:authentication property="principal.role" var="userRole"/>
+                                <c:if test="${userRole.equals(UserRole.INVESTOR)}">
+                                    <a class="btn btn-xs btn-primary active pull-right" role="button" style="margin: 5px"
+                                       href="<c:url value='/startup/invest/${startup.id}'/>">Invest</a>
+                                </c:if>
+                            </sec:authorize>
+                            <sec:authorize access="!isAuthenticated()">
                                 <a class="btn btn-xs btn-primary active pull-right" role="button" style="margin: 5px"
                                    href="<c:url value='/startup/invest/${startup.id}'/>">Invest</a>
-                            </c:if>
-                        </sec:authorize>
-                        <sec:authorize access="!isAuthenticated()">
-                            <a class="btn btn-xs btn-primary active pull-right" role="button" style="margin: 5px"
-                               href="<c:url value='/startup/invest/${startup.id}'/>">Invest</a>
-                        </sec:authorize>
+                            </sec:authorize>
+                        </div>
                     </div>
                 </div>
             </c:forEach>
